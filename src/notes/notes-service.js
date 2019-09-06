@@ -9,7 +9,7 @@ const NotesService = {
 			.returning('*')
 			.then(rows => {
 				return rows[0]
-			)}
+			})
 	},
 	getByIndex(knex, id){
 		return knex
