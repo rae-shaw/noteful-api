@@ -1,11 +1,11 @@
 const NotesService = {
-	getAllNotes(){
+	getAllNotes(knex) {
 		return knex.select('*').from('noteful_notes')
 	},
 	insertNote(knex, newNote){
 		return knex
 			.insert(newNote)
-			.into('noteful_notes')
+			.into('noteful')
 			.returning('*')
 			.then(rows => {
 				return rows[0]
@@ -13,19 +13,21 @@ const NotesService = {
 	},
 	getByIndex(knex, id){
 		return knex
-			.from('noteful_notes')
+			.from('noteful')
 			.select('*')
 			.where(id, 'id')
 			.first()
 	},
 	deleteNote(knex, id){
-		return knex('noteful_notes')
+		return knex('noteful')
 			.where({ id })
 			.delete
 	},
 	updateNote(knex, id, updatedFields){
-		return knex('noteful_notes')
+		return knex('noteful')
 			.where({ id })
 			.update(updatedFields)
 	},
 }
+
+module.exports = NotesService

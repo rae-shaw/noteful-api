@@ -24,8 +24,8 @@ describe('noteful Endpoints', function() {
 		context('Given no notes', () => {
 			it('responds with 200 and an empty list', () => {
 				return supertest(app)
-					.get('api/bookmarks')
-					.set('Authorization', `Bearer ${process.env.API_TOKEN}`)
+					.get('api/notes')
+					//.set('Authorization', `Bearer ${process.env.API_TOKEN}`)
 					.expect(200, [])
 			})
 		})
