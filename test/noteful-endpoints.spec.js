@@ -16,11 +16,12 @@ describe('noteful Endpoints', function() {
 
 	//before('clean the table', () => db('noteful').truncate())
 
-	//afterEach('cleanup', () => db('bookmarks').truncate())
+	//afterEach('cleanup', () => db('noteful').truncate())
 
 	after('disconnect from db', () => db.destroy())
 
 	describe('GET /api/notes', () => {
+		console.log('process.env', process.env)
 		context('Given no notes', () => {
 			it('responds with 200 and an empty list', () => {
 				return supertest(app)
