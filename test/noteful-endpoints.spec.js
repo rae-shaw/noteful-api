@@ -9,23 +9,23 @@ describe('noteful Endpoints', function() {
 	before('make knex instance', () => {
 		db = knex({
 			client: 'pg',
-			connection: process.env.TEST_DB_URL
+			connection: process.env.TEST_DB_URL,
 		})
 		app.set('db', db)
 	})
 
-	//before('clean the table', () => db('noteful').truncate())
+	before('clean the table', () => db('noteful_notes').truncate())
 
-	//afterEach('cleanup', () => db('noteful').truncate())
+	afterEach('cleanup', () => db('noteful_notes').truncate())
 
 	after('disconnect from db', () => db.destroy())
 
-	describe('GET /api/notes', () => {
+	describe('GET /api/notes/', () => {
 		console.log('process.env', process.env)
 		context('Given no notes', () => {
 			it('responds with 200 and an empty list', () => {
 				return supertest(app)
-					.get('api/notes')
+					.get('api/notes/')
 					//.set('Authorization', `Bearer ${process.env.API_TOKEN}`)
 					.expect(200, [])
 			})

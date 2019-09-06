@@ -38,4 +38,35 @@ notesRouter
 		//delete note
 //		//update note
 
+// notesRouter
+// 	.route('/:id')
+// 	.all((req, res, next) =>{
+// 		const knexInstance = req.app.get('db')
+// 		NotesService.getById(knexInstance, req.params.id)
+// 			.then(note => {
+// 				if(!note) {
+// 					logger.error(`Note with id ${req.params.id} not found`)
+// 					return res.status(404).json({
+// 						error: { message: `Bookmark Not Found` }
+// 					})
+// 				}
+// 				res.note = note
+// 				next()
+// 			})
+// 		.catch(next)
+// 	})
+// 	.get((req, res) => {
+// 		res.json(serializeNote(res.note))
+// 	})
+
+
+
+
+
+
+
+
+
+
+
 module.exports = notesRouter
