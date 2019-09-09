@@ -5,26 +5,26 @@ const NotesService = {
 	insertNote(knex, newNote){
 		return knex
 			.insert(newNote)
-			.into('noteful')
+			.into('noteful_notes')
 			.returning('*')
 			.then(rows => {
 				return rows[0]
 			})
 	},
-	getByIndex(knex, id){
+	getById(knex, id){
 		return knex
-			.from('noteful')
+			.from('noteful_notes')
 			.select('*')
-			.where(id, 'id')
+			.where({ id })
 			.first()
 	},
 	deleteNote(knex, id){
-		return knex('noteful')
+		return knex('noteful_notes')
 			.where({ id })
-			.delete
+			.delete()
 	},
 	updateNote(knex, id, updatedFields){
-		return knex('noteful')
+		return knex('noteful_notes')
 			.where({ id })
 			.update(updatedFields)
 	},
